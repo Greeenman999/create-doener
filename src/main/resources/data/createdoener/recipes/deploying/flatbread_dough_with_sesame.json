@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "createdoener:flatbread_dough"
+    },
+    {
+      "item": "createdoener:sesame_seeds"
+    }
+  ],
+  "results": [
+    {
+      "item": "createdoener:flatbread_dough_with_sesame"
+    }
+  ]
+}

@@ -1,6 +1,11 @@
 package de.greenman999.create.doener;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.foundation.data.CreateRegistrate;
+import de.greenman999.create.doener.block.ModBlockEntityTypes;
+import de.greenman999.create.doener.block.ModBlocks;
+import de.greenman999.create.doener.item.ModCreativeModeTabs;
+import de.greenman999.create.doener.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -18,8 +23,16 @@ public class CreateDoener {
     public static final String MOD_ID = "createdoener";
     private static final Logger LOGGER = LogUtils.getLogger();
 
+    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
+
     public CreateDoener() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        REGISTRATE.registerEventListeners(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlocks.register();
+        ModBlockEntityTypes.register();
 
         modEventBus.addListener(this::commonSetup);
 
@@ -32,6 +45,7 @@ public class CreateDoener {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+
     }
 
     @SubscribeEvent

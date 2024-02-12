@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "minecraft:beef"
+    }
+  ],
+  "results": [
+    {
+      "item": "createdoener:beef_layer"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "createdoener:empty_skewer"
+  },
+  "loops": 10,
+  "results": [
+    {
+      "item": "createdoener:kebab_skewer"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createdoener:incomplete_kebab_skewer"
+        },
+        {
+          "item": "createdoener:beef_layer"
+        }
+      ],
+      "results": [
+        {
+          "item": "createdoener:incomplete_kebab_skewer"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "createdoener:incomplete_kebab_skewer"
+  }
+}
