@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "createdoener:block/kebab_grill",
+      "y": 90
+    },
+    "facing=north": {
       "model": "createdoener:block/kebab_grill"
+    },
+    "facing=south": {
+      "model": "createdoener:block/kebab_grill",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createdoener:block/kebab_grill",
+      "y": 270
     }
   }
 }

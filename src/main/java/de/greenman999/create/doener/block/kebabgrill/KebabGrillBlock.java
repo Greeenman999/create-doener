@@ -1,6 +1,7 @@
 package de.greenman999.create.doener.block.kebabgrill;
 
 import com.simibubi.create.AllShapes;
+import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
 import com.simibubi.create.foundation.block.IBE;
 import de.greenman999.create.doener.block.ModBlockEntityTypes;
@@ -18,7 +19,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-public class KebabGrillBlock extends KineticBlock implements IBE<KebabGrillBlockEntity> {
+public class KebabGrillBlock extends HorizontalKineticBlock implements IBE<KebabGrillBlockEntity> {
 
     public KebabGrillBlock(Properties properties) {
         super(properties);
@@ -26,7 +27,7 @@ public class KebabGrillBlock extends KineticBlock implements IBE<KebabGrillBlock
 
     @Override
     public @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
-        return RenderShape.ENTITYBLOCK_ANIMATED;
+        return RenderShape.MODEL;
     }
 
     @Override

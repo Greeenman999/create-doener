@@ -8,6 +8,7 @@ import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import de.greenman999.create.doener.block.ModBlockEntityTypes;
 import de.greenman999.create.doener.block.ModBlocks;
+import de.greenman999.create.doener.block.ModPartialModels;
 import de.greenman999.create.doener.item.ModCreativeModeTabs;
 import de.greenman999.create.doener.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
@@ -42,6 +43,7 @@ public class CreateDoener {
         ModItems.register(modEventBus);
         ModBlocks.register();
         ModBlockEntityTypes.register();
+        ModPartialModels.register();
 
         modEventBus.addListener(this::commonSetup);
 

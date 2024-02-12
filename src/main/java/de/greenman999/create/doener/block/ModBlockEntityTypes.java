@@ -6,7 +6,6 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import de.greenman999.create.doener.CreateDoener;
 import de.greenman999.create.doener.block.kebabgrill.KebabGrillBlockEntity;
 import de.greenman999.create.doener.block.kebabgrill.KebabGrillInstance;
-import de.greenman999.create.doener.block.kebabgrill.KebabGrillRenderer;
 
 public class ModBlockEntityTypes {
 

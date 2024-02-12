@@ -7,4 +7,5 @@ public class KebabGrillRenderer extends KineticBlockEntityRenderer<KebabGrillBlo
     public KebabGrillRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }
+
 }
