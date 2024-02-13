@@ -16,7 +16,7 @@ public class ModBlocks {
     }
 
     public static final BlockEntry<KebabGrillBlock> KEBAB_GRILL = CreateDoener.REGISTRATE.block("kebab_grill", KebabGrillBlock::new)
-            .initialProperties(SharedProperties::stone)
+            .initialProperties(SharedProperties::softMetal)
             .transform(BlockStressDefaults.setImpact(4.0))
             .blockstate((dataGenContext, provider) -> provider.simpleBlock(dataGenContext.get(),
                     provider.models().getExistingFile(provider.modLoc("block/kebab_grill"))))

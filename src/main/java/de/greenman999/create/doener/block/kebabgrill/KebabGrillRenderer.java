@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
 import de.greenman999.create.doener.block.ModPartialModels;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class KebabGrillRenderer extends KineticBlockEntityRenderer<KebabGrillBlockEntity> {
@@ -13,7 +14,9 @@ public class KebabGrillRenderer extends KineticBlockEntityRenderer<KebabGrillBlo
     }
 
     @Override
-    protected SuperByteBuffer getRotatedModel(KebabGrillBlockEntity  be, BlockState state) {
-        return CachedBufferer.partial(ModPartialModels.KEBAB_SKEWER, state);
+    protected SuperByteBuffer getRotatedModel(KebabGrillBlockEntity be, BlockState state) {
+        if(!ItemStack.EMPTY.equals(be.getHeldItem()))
+            return CachedBufferer.partial(ModPartialModels.KEBAB_SKEWER, state);
+        return null;
     }
 }
