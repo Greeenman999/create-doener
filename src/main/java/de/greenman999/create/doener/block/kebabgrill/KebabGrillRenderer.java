@@ -30,7 +30,7 @@ public class KebabGrillRenderer extends KineticBlockEntityRenderer<KebabGrillBlo
     @Override
     protected SuperByteBuffer getRotatedModel(KebabGrillBlockEntity be, BlockState state) {
         System.out.println("getRotatedModel");
-        if(!ItemStack.EMPTY.getItem().equals(be.getHeldItem().getItem()))
+        if(!ItemStack.EMPTY.getItem().equals(be.getHeldItem().stack.getItem()))
             return CachedBufferer.partial(ModPartialModels.KEBAB_SKEWER, state);
         System.out.println("getRotatedModel empty");
         return CachedBufferer.partial(ModPartialModels.EMPTY_GRILL, state);

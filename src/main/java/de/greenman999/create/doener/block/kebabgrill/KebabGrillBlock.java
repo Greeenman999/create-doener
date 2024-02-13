@@ -58,19 +58,36 @@ public class KebabGrillBlock extends HorizontalKineticBlock implements IBE<Kebab
 
         KebabGrillBlockEntity kebabGrillBlockEntity = getBlockEntity(world, pos);
         ItemStack heldItem = player.getItemInHand(hand);
-        if(ModItems.KEBAB_SKEWER.asItem().equals(heldItem.getItem()) && kebabGrillBlockEntity.getHeldItem().isEmpty()) {
+        /*if(ModItems.KEBAB_SKEWER.asItem().equals(heldItem.getItem()) && kebabGrillBlockEntity.getHeldItem().stack.isEmpty()) {
             System.out.println("set");
-            kebabGrillBlockEntity.kebabGrillBehaviour.setHeldItem(new TransportedItemStack(heldItem.copyWithCount(1)));
+            kebabGrillBlockEntity.setHeldItem(new TransportedItemStack(heldItem.copyWithCount(1)));
             if(!player.isCreative())
                 heldItem.shrink(1);
             return InteractionResult.SUCCESS;
 
         } else if(ItemStack.EMPTY.getItem().equals(heldItem.getItem())) {
-            if(!ItemStack.EMPTY.getItem().equals(kebabGrillBlockEntity.getHeldItem().getItem())) {
+            if(kebabGrillBlockEntity.getHeldItem() != null && !ItemStack.EMPTY.getItem().equals(kebabGrillBlockEntity.getHeldItem().stack.getItem())) {
                 System.out.println("remove");
-                player.getInventory().placeItemBackInInventory(kebabGrillBlockEntity.getHeldItem().copyWithCount(1));
-                kebabGrillBlockEntity.kebabGrillBehaviour.removeHeldItem();
+                player.getInventory().placeItemBackInInventory(kebabGrillBlockEntity.getHeldItem().stack.copyWithCount(1));
+                kebabGrillBlockEntity.removeHeldItem();
                 return InteractionResult.SUCCESS;
+            }
+        }*/
+        if(kebabGrillBlockEntity == null) return InteractionResult.PASS;
+        if (kebabGrillBlockEntity.getHeldItem() == null) {
+            if (ModItems.KEBAB_SKEWER.asItem().equals(heldItem.getItem())) {
+                kebabGrillBlockEntity.setHeldItem(new TransportedItemStack(heldItem.copyWithCount(1)));
+                if (!player.isCreative())
+                    heldItem.shrink(1);
+                return InteractionResult.SUCCESS;
+            }
+        } else {
+            if (ItemStack.EMPTY.getItem().equals(heldItem.getItem())) {
+                if (!ItemStack.EMPTY.getItem().equals(kebabGrillBlockEntity.getHeldItem().stack.getItem())) {
+                    player.getInventory().placeItemBackInInventory(kebabGrillBlockEntity.getHeldItem().stack.copyWithCount(1));
+                    kebabGrillBlockEntity.removeHeldItem();
+                    return InteractionResult.SUCCESS;
+                }
             }
         }
         return InteractionResult.PASS;

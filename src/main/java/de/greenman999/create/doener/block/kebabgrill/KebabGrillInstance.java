@@ -16,13 +16,11 @@ import net.minecraft.world.level.block.state.BlockState;
 public class KebabGrillInstance extends SingleRotatingInstance<KebabGrillBlockEntity> {
     public KebabGrillInstance(MaterialManager materialManager, KebabGrillBlockEntity blockEntity) {
         super(materialManager, blockEntity);
-        System.out.println("init");
-        blockEntity.setInstance(this);
     }
 
     @Override
     protected Instancer<RotatingData> getModel() {
-        if(!ItemStack.EMPTY.getItem().equals(blockEntity.getHeldItem().getItem()))
+        if(!ItemStack.EMPTY.getItem().equals(blockEntity.getHeldItem().stack.getItem()))
             return getRotatingMaterial().getModel(ModPartialModels.KEBAB_SKEWER, blockEntity.getBlockState());
         return getRotatingMaterial().getModel(ModPartialModels.EMPTY_GRILL, blockEntity.getBlockState());
     }
