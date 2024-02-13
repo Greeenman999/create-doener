@@ -61,7 +61,6 @@ public class KebabGrillBlock extends HorizontalKineticBlock implements IBE<Kebab
         if(ModItems.KEBAB_SKEWER.asItem().equals(heldItem.getItem()) && kebabGrillBlockEntity.getHeldItem().isEmpty()) {
             System.out.println("set");
             kebabGrillBlockEntity.kebabGrillBehaviour.setHeldItem(new TransportedItemStack(heldItem.copyWithCount(1)));
-            kebabGrillBlockEntity.getInstance().init();
             if(!player.isCreative())
                 heldItem.shrink(1);
             return InteractionResult.SUCCESS;
@@ -71,7 +70,6 @@ public class KebabGrillBlock extends HorizontalKineticBlock implements IBE<Kebab
                 System.out.println("remove");
                 player.getInventory().placeItemBackInInventory(kebabGrillBlockEntity.getHeldItem().copyWithCount(1));
                 kebabGrillBlockEntity.kebabGrillBehaviour.removeHeldItem();
-                kebabGrillBlockEntity.getInstance().init();
                 return InteractionResult.SUCCESS;
             }
         }

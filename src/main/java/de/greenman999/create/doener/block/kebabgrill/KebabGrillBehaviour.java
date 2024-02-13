@@ -11,9 +11,11 @@ public class KebabGrillBehaviour extends BlockEntityBehaviour {
     public static final BehaviourType<KebabGrillBehaviour> TYPE = new BehaviourType<>();
 
     TransportedItemStack heldItem;
+    KebabGrillBlockEntity blockEntity;
 
-    public KebabGrillBehaviour(SmartBlockEntity be) {
+    public KebabGrillBehaviour(KebabGrillBlockEntity be) {
         super(be);
+        blockEntity = be;
     }
 
     @Override
