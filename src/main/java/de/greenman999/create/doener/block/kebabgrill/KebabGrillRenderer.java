@@ -17,15 +17,6 @@ public class KebabGrillRenderer extends KineticBlockEntityRenderer<KebabGrillBlo
         super(context);
     }
 
-    @Override
-    protected void renderSafe(KebabGrillBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
-        if (!Backend.canUseInstancing(be.getLevel())) {
-
-        }
-        BlockState state = this.getRenderedBlockState(be);
-        System.out.println("render");
-        //renderRotatingBuffer(be, this.getRotatedModel(be, state), ms, buffer.getBuffer(RenderType.solid()), light);
-    }
 
     @Override
     protected SuperByteBuffer getRotatedModel(KebabGrillBlockEntity be, BlockState state) {

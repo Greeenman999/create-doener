@@ -1,33 +1,62 @@
 package de.greenman999.create.doener.block.kebabgrill;
 
-import com.jozufozu.flywheel.api.Instancer;
 import com.jozufozu.flywheel.api.MaterialManager;
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllPartialModels;
-import com.simibubi.create.content.kinetics.base.HalfShaftInstance;
-import com.simibubi.create.content.kinetics.base.SingleRotatingInstance;
+import com.jozufozu.flywheel.api.instance.DynamicInstance;
+import com.jozufozu.flywheel.core.PartialModel;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntityInstance;
 import com.simibubi.create.content.kinetics.base.flwdata.RotatingData;
+import com.simibubi.create.foundation.render.AllMaterialSpecs;
 import de.greenman999.create.doener.block.ModPartialModels;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockState;
 
-public class KebabGrillInstance extends SingleRotatingInstance<KebabGrillBlockEntity> {
+public class KebabGrillInstance extends KineticBlockEntityInstance<KebabGrillBlockEntity> implements DynamicInstance {
+
+    private RotatingData kebab_skewer;
+    PartialModel lastModel;
+
     public KebabGrillInstance(MaterialManager materialManager, KebabGrillBlockEntity blockEntity) {
         super(materialManager, blockEntity);
+
+        updateModel();
     }
 
     @Override
-    protected Instancer<RotatingData> getModel() {
-        if(!ItemStack.EMPTY.getItem().equals(blockEntity.getHeldItem().stack.getItem()))
-            return getRotatingMaterial().getModel(ModPartialModels.KEBAB_SKEWER, blockEntity.getBlockState());
-        return getRotatingMaterial().getModel(ModPartialModels.EMPTY_GRILL, blockEntity.getBlockState());
+    protected void remove() {
+        kebab_skewer.delete();
     }
 
-/*    //cause the block shape is full, the light is 0
+    private PartialModel getModel() {
+        if(blockEntity.getHeldItem() != null && !ItemStack.EMPTY.getItem().equals(blockEntity.getHeldItem().stack.getItem())) {
+            System.out.println("Model changed to KEBAB_SKEWER");
+            lastModel = ModPartialModels.KEBAB_SKEWER;
+            return ModPartialModels.KEBAB_SKEWER;
+        }
+        System.out.println("Model changed to EMPTY_GRILL");
+        lastModel = ModPartialModels.EMPTY_GRILL;
+        return ModPartialModels. EMPTY_GRILL;
+    }
+
+    private void updateModel() {
+        kebab_skewer = materialManager.defaultCutout()
+                .material(AllMaterialSpecs.ROTATING)
+                .getModel(getModel(), blockState)
+                .createInstance();
+
+        kebab_skewer.setRotationAxis(Direction. Axis.Y);
+        kebab_skewer.setRotationalSpeed(blockEntity.getSpeed());
+    }
+
+    @Override
+    public void beginFrame(){
+        if(lastModel != getModel()){
+            updateModel();
+            System.out.println("Model changed");
+        }
+    }
+
     @Override
     public void updateLight() {
-        relight(pos.above(), rotatingModel);
-    }*/
+        relight(pos, kebab_skewer);
+    }
 }
